@@ -1,2 +1,32 @@
-# mahvarezan
-vless://5de2dfab-28e4-4773-b0d3-8d43da0d9ac3@cnamemc.ciscocdn2.live:443?security=tls&amp;sni=c3mc.ciscocdn2.live&amp;type=grpc&amp;alpn=http/1.1&amp;path=t4VcuIJJ26BhLLqEvtNJgMFDx&amp;host=c3mc.ciscocdn2.live&amp;serviceName=t4VcuIJJ26BhLLqEvtNJgMFDx&amp;mode=multi&amp;encryption=none&amp;fp=chrome&amp;headerType=None#tls_grpc_CDN_vless_Betforward3_همراه اول
+import numpy as np
+
+print("Enter the two values for input layers")
+
+print('a = ')
+a = int(input())
+# 2
+print('b = ')
+b = int(input())
+# 3
+
+input_data = np.array([a, b])
+
+weights = {
+    'node_0': np.array([1, 1]),
+    'node_1': np.array([-1, 1]),
+    'output_node': np.array([2, -1])
+}
+
+node_0_value = (input_data * weights['node_0']).sum()
+# 2 * 1 +3 * 1 = 5
+print('node 0_hidden: {}'.format(node_0_value))
+
+node_1_value = (input_data * weights['node_1']).sum()
+# 2 * -1 + 3 * 1 = 1
+print('node_1_hidden: {}'.format(node_1_value))
+
+hidden_layer_values = np.array([node_0_value, node_1_value])
+
+output_layer = (hidden_layer_values * weights['output_node']).sum()
+
+print("output layer : {}".format(output_layer))
